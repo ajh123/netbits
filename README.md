@@ -2,7 +2,7 @@
 
 Net Bits is a Python package that allows developers to easily convert data into structured packets which can be sent over a network. Additionally there are smart packet handling utilities which makes packet processing a breeze.
 
-## Installation - not valid!
+## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install netbits
 
