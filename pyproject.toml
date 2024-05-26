@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netbits"
+version = "0.0.1"
+description = "Convert data into structured packets and make packet handling a breeze!"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name="Samuel Hulme" }
+]
+dependencies = [
+    # Add your requirements here, replacing the placeholder
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ajh123/netbits"
+"Issues" = "https://github.com/ajh123/netbits/issues"
