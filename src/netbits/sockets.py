@@ -48,9 +48,13 @@ def readStructuredPacket(sock: socket.socket, registry: registry.Registry[Type[S
     else:
         return None
     
-def sendStructuredPacket(sock: socket.socket, identifier: Identifier, packet: StructuredPacket):
+def sendStructuredPacket(sock: socket.socket, packet: StructuredPacket, registry: registry.Registry[Type[StructuredPacket]]):
+    packet_id = registry.get_id(type(packet))
+    if packet_id == None:
+        raise ValueError(f"Packet({packet}) must be registered in the registry!")
+
     buff = Buffer(bytearray())
-    buff.write_string(str(identifier))
+    buff.write_string(str(packet_id))
     packet.pack(buff)
 
     _send_msg(sock, buff.buffer)

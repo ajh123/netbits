@@ -17,3 +17,12 @@ class Registry(Generic[T]):
             return self._registry.get(identifier)
         except ValueError:
             return None
+        
+    def get_id(self, value: T) -> Identifier | None:
+        try:
+            for key, dvalue in self._registry.items():
+                if dvalue == value:
+                    return key
+        except ValueError:
+            return None
+        return None
