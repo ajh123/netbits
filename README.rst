@@ -15,7 +15,7 @@ Use the package manager `pip <https://pip.pypa.io/en/stable/>`_ to install netbi
 Usage
 -----
 
-See the documentation at `example.com <example.com>`_
+See the documentation at https://netbits.minersonline.uk/en/latest/
 
 License
 -------
