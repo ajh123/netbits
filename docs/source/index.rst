@@ -8,30 +8,23 @@ Welcome to Net Bits's documentation!
 
 .. include:: ../../README.rst
 
-.. automodule:: netbits
-   :members:
-.. automodule:: netbits.registry.identifier
-   :members:
-.. automodule:: netbits.registry.registry
-   :members:
-.. automodule:: netbits.buffer
-   :members:
-.. automodule:: netbits.handler
-   :members:
-.. automodule:: netbits.packet
-   :members:
-.. automodule:: netbits.sockets
-   :members:
+Tutorials
+=========
+
+Use these tutorials to help you get started with Net Bits
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
 
+   tutorial/netbits-client
+   tutorial/netbits-server
 
+Modules
+=======
 
-Indices and tables
-==================
+.. autosummary::
+   :toctree: _autosummary
+   :template: custom-module-template.rst
+   :recursive:
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   netbits

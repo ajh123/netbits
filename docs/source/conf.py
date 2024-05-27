@@ -14,7 +14,6 @@ release = '0.0.1'
 import os
 import sys
 pth = os.path.abspath('../../')
-print(f"\n{pth}\n")
 sys.path.insert(0, pth)
 
 # -- General configuration ---------------------------------------------------
@@ -22,6 +21,7 @@ sys.path.insert(0, pth)
 
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
     'sphinx.ext.viewcode',
     'sphinx.ext.coverage',
     'sphinx.ext.napoleon'
