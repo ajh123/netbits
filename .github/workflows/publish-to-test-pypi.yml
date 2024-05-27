@@ -1,6 +1,6 @@
 name: Publish Python 🐍 distribution 📦 to TestPyPI
 
-on: [push, workflow_dispatch]
+on: [push]
 
 jobs:
   build:
