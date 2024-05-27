@@ -84,7 +84,7 @@ Next, we will implement the client to send and receive these packets.
 .. code-block:: python
 
     import socket
-    from netbits.registry import *
+    from netbits.registries import *
     from netbits.sockets import *
 
     def client_main():

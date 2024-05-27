@@ -1,4 +1,4 @@
-from netbits.registry import *
+from netbits.registries import *
 from netbits.packet import StructuredPacket
 from netbits.sockets import *
 import socket

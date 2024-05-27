@@ -86,7 +86,7 @@ Registry Setup
 
 .. code-block:: python
 
-    from netbits.registry import *
+    from netbits.registries import *
     from typing import Type
 
     reg = Registry[Type[StructuredPacket]]()

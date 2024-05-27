@@ -15,10 +15,7 @@ Use the package manager `pip <https://pip.pypa.io/en/stable/>`_ to install netbi
 Usage
 -----
 
-.. code-block:: python
-
-    from netbits import file1_name
-    file1_name.my_function()
+See the documentation at `example.com <example.com>`_
 
 License
 -------

@@ -3,25 +3,49 @@ import struct
 from typing import Type
 
 from .packet import *
-from .registry import *
+from .registries import *
 
-    
+
 def _send_msg(sock: socket.socket, msg: bytearray):
-    # Prefix each message with a 4-byte length (network byte order)
+    """
+    Send a message through the socket, prefixed with its length.
+
+    :param sock: The socket to send the message through.
+    :type sock: socket.socket
+    :param msg: The message to send.
+    :type msg: bytearray
+    """
     msg = struct.pack('>I', len(msg)) + msg
     sock.sendall(msg)
 
+
 def _recv_msg(sock: socket.socket):
-    # Read message length and unpack it into an integer
+    """
+    Receive a message from the socket.
+
+    :param sock: The socket to receive the message from.
+    :type sock: socket.socket
+    :return: The received message data.
+    :rtype: bytearray or None
+    """
     raw_msglen = _recvall(sock, 4)
     if not raw_msglen:
         return None
     msglen = struct.unpack('>I', raw_msglen)[0]
-    # Read the message data
     return _recvall(sock, msglen)
 
+
 def _recvall(sock: socket.socket, n):
-    # Helper function to recv n bytes or return None if EOF is hit
+    """
+    Helper function to receive n bytes or return None if EOF is hit.
+
+    :param sock: The socket to receive data from.
+    :type sock: socket.socket
+    :param n: The number of bytes to receive.
+    :type n: int
+    :return: The received data.
+    :rtype: bytearray or None
+    """
     try:
         data = bytearray()
         while len(data) < n:
@@ -32,12 +56,21 @@ def _recvall(sock: socket.socket, n):
         return data
     except ConnectionAbortedError:
         return None
-    
+
 
 def readStructuredPacket(sock: socket.socket, registry: registry.Registry[Type[StructuredPacket]]) -> StructuredPacket | None:
-    # Read the message
+    """
+    Read a structured packet from the socket.
+
+    :param sock: The socket to read from.
+    :type sock: socket.socket
+    :param registry: The registry of structured packet types.
+    :type registry: registry.Registry[Type[StructuredPacket]]
+    :return: The structured packet read from the socket.
+    :rtype: StructuredPacket or None
+    """
     msg_type_data = _recv_msg(sock)
-    if msg_type_data == None:
+    if msg_type_data is None:
         return None
     buff = Buffer(msg_type_data)
 
@@ -47,10 +80,22 @@ def readStructuredPacket(sock: socket.socket, registry: registry.Registry[Type[S
         return msg_class.unpack(buff)
     else:
         return None
-    
+
+
 def sendStructuredPacket(sock: socket.socket, packet: StructuredPacket, registry: registry.Registry[Type[StructuredPacket]]):
+    """
+    Send a structured packet through the socket.
+
+    :param sock: The socket to send through.
+    :type sock: socket.socket
+    :param packet: The structured packet to send.
+    :type packet: StructuredPacket
+    :param registry: The registry of structured packet types.
+    :type registry: registry.Registry[Type[StructuredPacket]]
+    :raises ValueError: If the packet type is not registered in the registry.
+    """
     packet_id = registry.get_id(type(packet))
-    if packet_id == None:
+    if packet_id is None:
         raise ValueError(f"Packet({packet}) must be registered in the registry!")
 
     buff = Buffer(bytearray())

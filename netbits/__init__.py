@@ -1,4 +1,4 @@
-from .registry import *
+from .registries import *
 from .buffer import *
 from .handler import *
 from .packet import *
