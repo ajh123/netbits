@@ -9,7 +9,7 @@
 project = 'Net Bits'
 copyright = '2024, Samuel Hulme'
 author = 'Samuel Hulme'
-release = '0.0.1'
+release = '0.0.3'
 
 import os
 import sys
